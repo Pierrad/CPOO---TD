@@ -2,7 +2,7 @@ package dispositif;
 
 import td01.LogMessages;
 import td01.Switchable;
-import td01.Zone;
+import zone.Zone;
 
 import java.util.Set;
 

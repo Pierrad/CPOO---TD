@@ -1,6 +1,4 @@
-package td01;
-
-import dispositif.Dispositif;
+package dispositif;
 
 /**
  *

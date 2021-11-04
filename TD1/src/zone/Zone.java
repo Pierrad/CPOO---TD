@@ -1,4 +1,4 @@
-package td01;
+package zone;
 
 import dispositif.Dispositif;
 
@@ -7,7 +7,7 @@ import java.util.Set;
 /**
  *
  */
-public class Zone {
+public class Zone implements IZone {
 
     /**
      * Default constructor

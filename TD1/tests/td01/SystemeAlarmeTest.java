@@ -1,6 +1,7 @@
 package td01;
 
 import dispositif.GestionDispositif;
+import habitant.Habitant;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

@@ -1,5 +1,7 @@
 package td01;
 
+import habitant.Habitant;
+
 /**
  *
  */

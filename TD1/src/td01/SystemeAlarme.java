@@ -1,6 +1,7 @@
 package td01;
 
 import dispositif.GestionDispositif;
+import habitant.Habitant;
 
 import java.util.Set;
 
