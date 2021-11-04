@@ -1,4 +1,4 @@
-package td01;
+package gestionnaire;
 
 import habitant.Habitant;
 
