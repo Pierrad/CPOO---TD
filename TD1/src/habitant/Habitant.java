@@ -33,6 +33,13 @@ public class Habitant {
     public void setPassword(String password) {
         this.password = password;
     }
+    
+    public boolean login(String name, String password) {
+        if (this.password != password || this.name != name) {
+            return false;
+        }
+        return true;
+    }
 
 
 }
