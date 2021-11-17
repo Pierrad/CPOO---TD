@@ -7,7 +7,6 @@ public class Camera extends Dispositif {
         super(name, id);
     }
 
-
     public Integer getBattery() {
         return battery;
     }
@@ -33,6 +32,14 @@ public class Camera extends Dispositif {
         this.setState(false);
         return this.getState();
     }
-
-
+    
+    public Boolean activer() {
+        this.setState2(true);
+        return this.getState2();
+    }
+    
+    public Boolean desactiver() {
+        this.setState2(false);
+        return this.getState2();
+    }
 }
