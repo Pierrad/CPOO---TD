@@ -1,0 +1,37 @@
+package td01;
+
+import org.junit.Assert.*;
+import dispositif.Capteur;
+import dispositif.GestionAlerte;
+
+public class CapteurTest {
+
+    @BeforeEach
+    void init() {
+        gestionAlerte = new GestionAlerte();
+        capteur = new Capteur("Capteur", 1, 3, gestionAlerte);
+    }
+
+    @Test
+    void testGetBatterie() {
+        assertEquals(3, capteur.getBattery());
+    }
+
+    @Test
+    void testSetBatterie() {
+        capteur.setBattery(4);
+        assertEquals(4, capteur.getBattery());
+    }
+
+    @Test
+    void testGetGestionAlerte() {
+        assertEquals(gestionAlerte, capteur.getGestionAlerte());
+    }
+
+    @Test
+    void testSetGestionAlerte() {
+        GestionAlerte gestionAlerte2 = new GestionAlerte();
+        capteur.setGestionAlerte(gestionAlerte2);
+        assertEquals(gestionAlerte2, capteur.getGestionAlerte());
+    }
+}
