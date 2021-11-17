@@ -59,4 +59,12 @@ public class GestionZone
         listZones.remove(zone);
     }
 
+    public ArrayList<Zone> list() {
+        for (Zone zone: this.getZones())
+        {
+        	System.out.println(zone.toString());
+        }
+        return this.getZones();
+    }
+
 }
