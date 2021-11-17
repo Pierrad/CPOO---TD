@@ -34,5 +34,8 @@ public class Habitant {
         this.password = password;
     }
 
+    public boolean login(String name, String password) {
+        return this.password == password && this.name == name;
+    }
 
 }
