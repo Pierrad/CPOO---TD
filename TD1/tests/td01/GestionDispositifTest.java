@@ -1,14 +1,7 @@
 package td01;
 
-import dispositif.Dispositif;
-import dispositif.GestionDispositif;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-
 public class GestionDispositifTest {
+    /*
     private Dispositif d1;
     private Dispositif d2;
     private GestionDispositif gd1;
@@ -60,4 +53,6 @@ public class GestionDispositifTest {
         gd1.setListDispositifs(gd1.demanderListeDispositif());
         Assertions.assertEquals(gd1.demanderListeDispositif(), gd1.getListDispositifs());
     }
+    */
+
 }
