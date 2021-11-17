@@ -53,13 +53,7 @@ public class SystemeAlarmeTest {
         sysAlarme.setAdministrateur(a);
         Assertions.assertEquals(a, sysAlarme.getAdministrateur());
     }
-
-    @Test
-    void testPhone() {
-        Set<PhoneNumber> s = new HashSet<>();
-        sysAlarme.setPhoneNumbers(s);
-        Assertions.assertEquals(s, sysAlarme.getPhoneNumbers());
-    }
+    
 
     @Test
     void testGestionnaire() {

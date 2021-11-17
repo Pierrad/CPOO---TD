@@ -6,15 +6,12 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.HashSet;
-import java.util.Set;
-
 class DispositifTest {
     private Dispositif d;
 
     @BeforeEach
     void setUp() {
-        d = new Dispositif("Dispositif 1");
+        d = new Dispositif("Dispositif 1", 1);
     }
 
     @AfterEach
@@ -24,6 +21,7 @@ class DispositifTest {
 
     @Test
     void clearLog() {
+        String[] sLg = {"fr", "fr"};
         Assertions.assertEquals(sLg, d.getLogs());
         d.clearLog();
     }

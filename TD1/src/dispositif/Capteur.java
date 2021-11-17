@@ -19,8 +19,12 @@ public class Capteur extends Dispositif {
         this.battery = battery;
     }
 
-    public GestionAlerte getGestionAlerte() { return gestionAlerte; }
+    public GestionAlerte getGestionAlerte() {
+        return gestionAlerte;
+    }
 
-    public void setGestionAlerte(GestionAlerte gestionAlerte) { this.gestionAlerte = gestionAlerte; }
+    public void setGestionAlerte(GestionAlerte gestionAlerte) {
+        this.gestionAlerte = gestionAlerte;
+    }
 
 }

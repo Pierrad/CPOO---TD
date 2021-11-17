@@ -15,8 +15,6 @@ public class SystemeAlarme {
 
     private Administrateur administrateur;
 
-    private Set<PhoneNumber> phoneNumbers;
-
     private Gestionnaire gestionnaire;
 
     private Set<Habitant> habitants;
@@ -54,14 +52,6 @@ public class SystemeAlarme {
 
     public void setAdministrateur(Administrateur administrateur) {
         this.administrateur = administrateur;
-    }
-
-    public Set<PhoneNumber> getPhoneNumbers() {
-        return phoneNumbers;
-    }
-
-    public void setPhoneNumbers(Set<PhoneNumber> phoneNumbers) {
-        this.phoneNumbers = phoneNumbers;
     }
 
     public Gestionnaire getGestionnaire() {

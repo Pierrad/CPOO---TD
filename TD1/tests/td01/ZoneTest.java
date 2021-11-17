@@ -15,7 +15,7 @@ class ZoneTest {
 
     @BeforeEach
     void setUp() {
-        z = new Zone();
+        z = new Zone("Name", "description");
     }
 
     @AfterEach

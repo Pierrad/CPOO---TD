@@ -1,23 +1,21 @@
 package dispositif;
 
-import td01.LogMessages;
-import td01.Switchable;
-import zone.Zone;
-
-import java.util.Set;
-
 /**
  *
  */
-public class Dispositif implements Switchable {
+public class Dispositif implements ISwitchable {
 
     private String name;
+    private Integer id;
+    private Boolean state;
+    private String[] logs;
 
     /**
      * Default constructor
      */
-    public Dispositif(String name) {
+    public Dispositif(String name, Integer id) {
         this.name = name;
+        this.id = id;
     }
 
     public String getName() {
@@ -28,9 +26,27 @@ public class Dispositif implements Switchable {
         this.name = name;
     }
 
-    public void triggerDispositif()
-    {
+    public Boolean getState() {
+        return state;
+    }
 
+    public void setState(Boolean state) {
+        this.state = state;
+    }
+
+    public void triggerDispositif() {
+    }
+
+    public String[] getLogs() {
+        return logs;
+    }
+
+    public void setLogs(String[] s) {
+        this.logs = s;
+    }
+
+    public void clearLog() {
+        this.logs = null;
     }
 
     @Override

@@ -2,6 +2,7 @@ package dispositif;
 
 public class Camera extends Dispositif {
     private Integer battery;
+    private Boolean isActivate;
 
     public Camera(String name, Integer id) {
         super(name, id);
@@ -15,12 +16,29 @@ public class Camera extends Dispositif {
         this.battery = battery;
     }
 
+    public Boolean getIsActivate() {
+        return isActivate;
+    }
+
+    public void setIsActivate(Boolean i) {
+        this.isActivate = i;
+    }
+
     public Integer chargeBatterie() {
         return this.battery;
     }
 
     public Boolean allumer() {
         this.setState(true);
+        return this.getState();
+    }
+
+    public void activate() {
+        this.setIsActivate(true);
+    }
+
+    public Boolean desactiver() {
+        this.setIsActivate(false);
         return this.getState();
     }
 
@@ -32,14 +50,6 @@ public class Camera extends Dispositif {
         this.setState(false);
         return this.getState();
     }
-    
-    public Boolean activer() {
-        this.setState2(true);
-        return this.getState2();
-    }
-    
-    public Boolean desactiver() {
-        this.setState2(false);
-        return this.getState2();
-    }
+
+
 }

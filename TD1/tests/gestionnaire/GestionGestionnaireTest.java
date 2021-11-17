@@ -21,15 +21,17 @@ public class GestionGestionnaireTest {
     @Test
     void testDefineNewGestionnaire() {
         String n = "PA";
-        gg.defineNewGestionnaire(n);
+        String p = "password";
+        gg.defineNewGestionnaire(n, p);
         Assertions.assertEquals("PA", gg.getCurrentGestionnaire());
     }
 
     @Test
     void testIsGestionnaire() {
         String n = "PA";
+        String p = "password";
         Assertions.assertEquals(false, gg.isGestionnaire(n));
-        gg.defineNewGestionnaire(n);
+        gg.defineNewGestionnaire(n, p);
         Assertions.assertEquals(true, gg.isGestionnaire(n));
     }
 

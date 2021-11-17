@@ -3,9 +3,10 @@ package dispositif;
 import java.util.ArrayList;
 
 /**
-* Classe de Gestion Dispositif
+ * Classe de Gestion Dispositif
+ *
  * @author Enzo
-*/
+ */
 public class GestionDispositif {
     private Dispositif dispositif;
     private ArrayList<Dispositif> listDispositif;
@@ -13,6 +14,7 @@ public class GestionDispositif {
 
     /**
      * Renvoi LE dispositif actuel
+     *
      * @return Dispositif
      */
     public Dispositif getDispositif() {
@@ -21,6 +23,7 @@ public class GestionDispositif {
 
     /**
      * Change le dispositif acutel
+     *
      * @param dispositif
      */
     public void setDispositif(Dispositif dispositif) {
@@ -29,6 +32,7 @@ public class GestionDispositif {
 
     /**
      * Renvoi la liste de tous les dispositifs
+     *
      * @return List<Dispositif>
      */
     public ArrayList<Dispositif> getDispositifs() {
@@ -37,6 +41,7 @@ public class GestionDispositif {
 
     /**
      * Change la liste des dispositifs
+     *
      * @param List<Dispositif>
      */
     public void setDispositifs(ArrayList<Dispositif> dispositifs) {
@@ -45,73 +50,82 @@ public class GestionDispositif {
 
     /**
      * Change la Zone du dispositif actuel
+     *
      * @param Dispositif dispositif, Zone zone
      */
-    public changeZone() {
+    public void changeZone() {
         //TODO
     }
 
     /**
      * Retire une zone
+     *
      * @param Zone zone
      */
-    public removeZone() {
+    public void removeZone() {
         //TODO
     }
 
     /**
      * Active tous les dispositifs d'une Zone
+     *
      * @param Zone zone
      */
-    public activateAll() {
+    public void activateAll() {
         //TODO
     }
 
     /**
      * Désactive tous les dispositifs d'une Zone
+     *
      * @param Zone zone
      */
-    public deactivateAll() {
+    public void deactivateAll() {
         //TODO
     }
 
     /**
      * Ajoute un dispositif à la Zone
+     *
      * @param Dispositif dispositif, String name, Zone zone
      */
-    public addDispositif() {
+    public void addDispositif() {
         //TODO
     }
 
     /**
      * Active un dispositif
+     *
      * @param Dispositif dispositif
      */
-    public activate() {
+    public void activate() {
         //TODO
     }
 
     /**
      * Désactive un dispositif
+     *
      * @param Dispositif dispositif
      */
-    public deactivate() {
+    public void deactivate() {
         //TODO
     }
 
     /**
      * Allume un dispositif
+     *
      * @param Dispositif dispositif
      */
-    public turnOn() {
+    public void turnOn() {
         //TODO
     }
 
     /**
      * Éteint un dispositif
+     *
      * @param Dispositif dispositif
      */
-    public turnOff() {
+    public void turnOff() {
         //TODO
     }
 
