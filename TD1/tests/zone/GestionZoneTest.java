@@ -1,58 +1,76 @@
-package testZone;
-
-import static org.junit.jupiter.api.Assertions.*;
+package zone;
 
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import zone.GestionZone;
+import java.util.ArrayList;
 
-/**
- * Classe GestionZoneTest
- * @author Marie ORFILA
- *
- */
+public class GestionZoneTest {
+    private GestionZone gz;
 
-class GestionZoneTest
-{
+    @BeforeEach
+    void setUp() {
+        gz = new GestionZone();
+    }
 
-	@BeforeEach
-	void setUp() throws Exception
-	{
-	}
+    @AfterEach
+    void destroy() {
+        gz = null;
+    }
 
-	@AfterEach
-	void tearDown() throws Exception
-	{
-	}
+    @Test
+    void testInitializeZone() {
+        gz.initializeZone();
+        Assertions.assertEquals(1, gz.getListZone().size());
+    }
 
-	@Test
-	void testAddZone()
-	{
-		GestionZone gz = new GestionZone();
-	    gz.addZone("nameZone", "descriptionZone");
-	    gz.addZone("nameZone2", "descriptionZone2");
+    @Test
+    void testSetterZone() {
+        ArrayList<Zone> lz = new ArrayList<Zone>();
+        lz.add(new Zone("HOUSE"));
+        lz.add(new Zone("JARDIN"));
+        Assertions.assertEquals(0, gz.getListZone().size());
+        gz.setZones(lz);
+        Assertions.assertEquals(2, gz.getListZone().size());
+    }
 
-	    assertEquals(gz.getZones().size(), 2);
-	}
+    @Test
+    void testAddZone() {
+        Zone z1 = new Zone("HOUSE", "Maison");
+        gz.addZone(z1);
+        gz.addZone("JARDIN", "Jardin");
+        Assertions.assertEquals(2, gz.getListZone().size());
+    }
 
-	@Test
-	void testRemoveZone()
-	{
-		GestionZone gz2 = new GestionZone();
-		gz2.addZone("nameZone", "descriptionZone");
-		gz2.addZone("nameZone2", "descriptionZone2");
-	    gz2.addZone("nameZone3", "descriptionZone3");
-	    gz2.addZone("nameZoneu4", "descriptionZone4");
+    @Test
+    void testAddZoneToZone() {
+        Zone zP = new Zone("House", "maison");
+        Zone zC = new Zone("Etage", "etage");
+        gz.addZoneToZone(zP, zC);
+        Assertions.assertEquals(1, zP.getNestedZone().size());
+    }
 
-	    assertEquals(gz2.getZones().size(), 4);
+    @Test
+    void testRemoveZone() {
+        Zone z1 = new Zone("House", "maison");
+        Zone z2 = new Zone("Etage", "etage");
+        gz.addZone(z1);
+        gz.addZone(z2);
+        Assertions.assertEquals(2, gz.getListZone().size());
+        gz.removeZone(z1);
+        Assertions.assertEquals(1, gz.getListZone().size());
+        gz.removeZone("Etage");
+        Assertions.assertEquals(0, gz.getListZone().size());
+    }
 
-	    gz2.removeZone(gz2.getZones().get(0));
-	    gz2.removeZone(gz2.getZones().get(2));
-
-	    assertEquals(gz2.getZones().size(), 2);
-
-	}
-
+    @Test
+    void testGetZoneFromName() {
+        Zone z1 = new Zone("House", "maison");
+        Zone z2 = new Zone("Etage", "etage");
+        gz.addZone(z1);
+        gz.addZone(z2);
+        Assertions.assertEquals(z1, gz.getZoneFromName("House"));
+    }
 }

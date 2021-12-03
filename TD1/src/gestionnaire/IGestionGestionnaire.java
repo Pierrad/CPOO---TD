@@ -1,13 +1,12 @@
 package gestionnaire;
 
-import habitant.Habitant;
-
 public interface IGestionGestionnaire {
-    void defineNewGestionnaire(String n, String p);
+    Gestionnaire getCurrentGestionnaire();
 
-    Boolean isGestionnaire(String n);
+    void defineNewGestionnaire(String name, String password);
+
+    Boolean isGestionnaire(String name);
 
     void disconnect();
 
-    Boolean switchInterfaceHabitant(Habitant h);
 }

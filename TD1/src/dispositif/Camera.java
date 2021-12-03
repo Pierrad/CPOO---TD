@@ -1,55 +1,96 @@
 package dispositif;
 
-public class Camera extends Dispositif {
-    private Integer battery;
-    private Boolean isActivate;
+import alerte.GestionAlerte;
+import alerte.Notification;
+import zone.Zone;
 
-    public Camera(String name, Integer id) {
-        super(name, id);
+import java.io.Serializable;
+
+/**
+ * @author Vasseur Pierre-Adrien
+ * <p>
+ * Camera dispositif class
+ * A camera can be turn on (can record) and activated (is recording)
+ */
+public class Camera extends Dispositif implements Serializable, ICamera {
+    private Integer battery = 100;
+    /**
+     * The current state of the Alarme (is in Alert or not)
+     */
+    private Boolean switchState = false;
+    /**
+     * We need to have an instance of GestionAlerte to trigger alert if needed
+     */
+    private GestionAlerte gestionAlerte;
+
+    public Camera(String name) {
+        super(name);
     }
 
+    public Camera(String name, Zone z) {
+        super(name, z);
+    }
+
+    public Camera(String name, Zone z, GestionAlerte ga) {
+        super(name, z);
+        gestionAlerte = ga;
+    }
+
+    @Override
+    public GestionAlerte getGestionAlerte() {
+        return gestionAlerte;
+    }
+
+    @Override
+    public void setGestionAlerte(GestionAlerte gestionAlerte) {
+        this.gestionAlerte = gestionAlerte;
+    }
+
+    @Override
     public Integer getBattery() {
         return battery;
     }
 
+    @Override
     public void setBattery(Integer battery) {
         this.battery = battery;
     }
 
-    public Boolean getIsActivate() {
-        return isActivate;
+    @Override
+    public Boolean getSwitchState() {
+        return this.switchState;
     }
 
-    public void setIsActivate(Boolean i) {
-        this.isActivate = i;
+    @Override
+    public void setSwitchState(Boolean s) {
+        if (this.getState().equals(true)) {
+            this.switchState = s;
+        } else if (this.getState().equals(false)) {
+            this.switchState = false;
+        }
     }
 
-    public Integer chargeBatterie() {
-        return this.battery;
-    }
-
-    public Boolean allumer() {
-        this.setState(true);
-        return this.getState();
-    }
-
-    public void activate() {
-        this.setIsActivate(true);
-    }
-
-    public Boolean desactiver() {
-        this.setIsActivate(false);
-        return this.getState();
-    }
-
+    @Override
     public void visionnerFlux() {
         System.out.println("Flux");
     }
 
-    public Boolean eteindre() {
-        this.setState(false);
-        return this.getState();
+    /**
+     * Call addNotif from GestionAlerte to register a new Notification of alert
+     */
+    @Override
+    public void triggerAlerte() {
+        gestionAlerte.addNotif(new Notification("Alerte de votre caméra : " + this.getName() + " dans la zone : " + this.getZone()));
     }
 
+    /**
+     * All the possibilities with this device
+     *
+     * @return string that list all possibilities
+     */
+    @Override
+    public String possibilities() {
+        return super.possibilities() + "4- Connaître la batterie de votre caméra\n" + "5- Allumer ou éteindre votre caméra";
+    }
 
 }

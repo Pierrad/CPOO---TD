@@ -1,23 +1,50 @@
 package dispositif;
 
-public class Alarme extends Dispositif {
+import zone.Zone;
 
-    boolean activate_alarme;
+import java.io.Serializable;
 
-    public Alarme(String name, Integer id) {
-        super(name, id);
+/**
+ * @author Vasseur Pierre-Adrien
+ * <p>
+ * Alarme dispositif class
+ * An alarme can be turn on (can trigger alert) and activated (triggering alert)
+ */
+public class Alarme extends Dispositif implements Serializable, IAlarme {
+    /**
+     * The current state of the Alarme (is in Alert or not)
+     */
+    private Boolean switchState = false;
+
+    public Alarme(String name) {
+        super(name);
     }
 
-    /* Méthode pour activer l'alarme */
-    public void start() {
-        System.out.println("alarme");
-        activate_alarme = true;
+    public Alarme(String name, Zone z) {
+        super(name, z);
     }
 
-    /* Méthode pour arreter l'alarme */
-    public void stop() {
-        activate_alarme = false;
-        System.out.println("ok");
+    @Override
+    public Boolean getSwitchState() {
+        return this.switchState;
     }
 
+    @Override
+    public void setSwitchState(Boolean s) {
+        if (this.getState().equals(true)) {
+            this.switchState = s;
+        } else if (this.getState().equals(false)) {
+            this.switchState = false;
+        }
+    }
+
+    /**
+     * All the possibilities with this device
+     *
+     * @return string that list all possibilities
+     */
+    @Override
+    public String possibilities() {
+        return super.possibilities() + "4- Allumer ou éteindre votre alarme";
+    }
 }

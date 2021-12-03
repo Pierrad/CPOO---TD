@@ -1,102 +1,79 @@
 package zone;
 
-import dispositif.Dispositif;
 
-import java.util.Set;
+import java.io.Serializable;
+import java.util.ArrayList;
 
-/** Classe de Zone
- * @author CAPARROS Damien
- **/
+/**
+ * @author Vasseur Pierre-Adrien
+ * <p>
+ * Zone class
+ */
+public class Zone implements Serializable, IZone {
+    private String name;
+    private String description;
+    private ArrayList<Zone> nestedZone = new ArrayList<Zone>();
 
-public class Zone implements IZone
-{
-	private String name;
-	private String description;
-	private Set<Dispositif> dispositifs;
-
-    /**
-     * Constructeur par défaut.
-     * @param zoneName
-     * @param desc
-     */
-    public Zone(String zoneName, String desc)
-    {
-    	name = zoneName;
-    	description = desc;
-    }
-    /**
-     * Constructeur par défaut sans description.
-     * @param zoneName
-     */
-    public Zone(String zoneName)
-    {
-    	name = zoneName;
-    	description = null;
+    public Zone(String zoneName, String desc) {
+        name = zoneName;
+        description = desc;
     }
 
-    /**
-    * Obtenir le nom.
-    * @return name
-    **/
-    public String getName()
-    {
+    public Zone(String zoneName) {
+        name = zoneName;
+        description = null;
+    }
+
+    @Override
+    public String getName() {
         return name;
     }
 
-    /**
-     * Obtenir la description.
-     * @return description
-     **/
-    public String getDesc()
-    {
+    @Override
+    public String getDescription() {
         return description;
     }
 
-    /**
-     * Changer le nom.
-     * @param name
-     */
-    public void setName(String name)
-    {
+    @Override
+    public ArrayList<Zone> getNestedZone() {
+        return nestedZone;
+    }
+
+    @Override
+    public void setName(String name) {
         this.name = name;
     }
 
+    @Override
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     /**
-     * Changer la description.
-     * @param desc
+     * Allow to add a zone to the current zone
+     *
+     * @param z the zone to be added to the current zone
      */
-    public void setDesc(String desc)
-    {
-    	this.description = desc;
-    }
-
-    /*public Set<Dispositif> getDispositifs()
-    {
-        return dispositifs;
-    }
-
-    public void setDispositifs(Set<Dispositif> dispositifs)
-    {
-        this.dispositifs = dispositifs;
-    }*/
-
-    /**
-     * Voir la liste de tous les dispositifs.
-     * @return Liste
-     **/
-    public void listDispositif()
-    {
-
+    @Override
+    public void addZoneToNestedZone(Zone z) {
+        if (!nestedZone.contains(z)) {
+            nestedZone.add(z);
+        }
     }
 
     /**
-     * Voir la liste de tous les dispositifs dans une zone donnée.
-     * @return Liste
-     **/
-    public void listDispositif(Zone z)
-    {
-
+     * Remove a zone from the current zone
+     *
+     * @param z the zone to be removed from the current zone
+     */
+    @Override
+    public void removeZoneToNestedZone(Zone z) {
+        nestedZone.remove(z);
     }
 
+    @Override
+    public String toString() {
+        return this.name;
+    }
 
 }

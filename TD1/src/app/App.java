@@ -1,7 +1,10 @@
 package app;
 
-import td01.SystemeAlarme;
-
+/**
+ * @author Vasseur Pierre-Adrien
+ * <p>
+ * The start of the application, it create an instance of the main Controller SystemeAlarme and then start it.
+ */
 public class App {
     public static void main(String[] args) throws Exception {
         SystemeAlarme controleur;
@@ -11,6 +14,5 @@ public class App {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 }

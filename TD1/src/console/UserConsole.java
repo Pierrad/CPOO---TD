@@ -1,90 +1,134 @@
 package console;
 
-import td01.Message;
-
-import java.util.List;
 import java.util.Scanner;
-import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
+/**
+ * @author Vasseur Pierre-Adrien
+ * <p>
+ * The ui interface of the app that contains all the commands to show
+ */
 public class UserConsole {
     Scanner sc = new Scanner(System.in);
 
+    // Habitant
+    public static final String CREATE_HABITANT = "ch";
+    public static final String REMOVE_HABITANT = "rh";
+    public static final String GET_LIST_HABITANT = "glh";
+    // Gestionnaire
+    public static final String GET_CURRENT_GESTIONNAIRE = "gcg";
+    public static final String DEFINE_NEW_GESTIONNAIRE = "dng";
+    // Dispositif
+    public static final String GET_LIST_DISPOSITIF = "gld";
+    public static final String GET_LIST_DISPOSITIF_BY_ZONE = "gldbz";
+    public static final String ADD_DISPOSITIF = "ad";
+    public static final String REMOVE_DISPOSITIF = "rd";
+    public static final String CHANGE_ZONE_OF_DISPOSITIF = "czod";
+    public static final String SELECT_DISPOSITIF = "sd";
+    public static final String ACTION_ON_ALL_DISPOSITIF_IN_ZONE = "aoadiz";
+    // Zone
+    public static final String GET_LIST_ZONE = "glz";
+    public static final String ADD_ZONE = "az";
+    public static final String ADD_ZONE_TO_ZONE = "aztz";
+    public static final String REMOVE_ZONE = "rz";
+    // Alert
+    public static final String GET_LIST_NOTIFICATION = "gln";
+    public static final String REMOVE_ALL_NOTIFICATIONS = "ran";
+    public static final String GENERATE_FALSE_ALERTE = "gfa";
+    public static final String EDIT_ALERT_ACTION = "eaa";
+    // Other
+    public static final String CHANGE_TO_HABITANT_INTERFACE = "cthi";
+    public static final String STOP = "s";
+    // Color
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_RED = "\u001B[31m";
 
-    public static final char COM_CREER_FORUM = 'f';
-    public static final char COM_CREER_CANAL = 'c';
-    public static final char COM_LIRE_MESSAGES = 'l';
-    public static final char COM_POSTER_MESSAGES = 'p';
-    public static final char COM_STOP = 's';
-    public static final char COM_CHANGER_MEMBRE = 'm';
-    public static final char COM_INSCRIRE = 'i';
-    public static final char COM_CREER_CANAL_DE_BREVES = 'b';
-
-    //On pourra modifier facilement pour par exemple utiliser des logger.
-    private final void sop(String s) {
+    private void sop(String s) {
         System.out.println(s);
     }
 
-    public String lireCommande() {
-        sop("------- COMMANDES ----------");
-        sop("creer Forum : " + COM_CREER_FORUM);
-        sop("creer Canal : " + COM_CREER_CANAL);
-        sop("creer Canal de brèves: " + COM_CREER_CANAL_DE_BREVES);
-        sop("lire messages : " + COM_LIRE_MESSAGES);
-        sop("poster un nouveau message : " + COM_POSTER_MESSAGES);
-        sop("changer de membre : " + COM_CHANGER_MEMBRE);
-        sop("s'inscrire : " + COM_INSCRIRE);
-        sop("stop : " + COM_STOP);
+    public String readCommandeGestionnaire() {
+        sop("---------- COMMANDES ----------");
+        sop("HABITANT-------------------");
+        sop("Créer un habitant : " + CREATE_HABITANT);
+        sop("Supprimer un habitant : " + REMOVE_HABITANT);
+        sop("Obtenir la liste des habitants : " + GET_LIST_HABITANT);
+        sop("GESTIONNAIRE-------------------");
+        sop("Obtenir le gestionnaire courant : " + GET_CURRENT_GESTIONNAIRE);
+        sop("Définir un nouveau gestionnaire : " + DEFINE_NEW_GESTIONNAIRE);
+        sop("DISPOSITIF---------------------");
+        sop("Obtenir la liste des dispositifs : " + GET_LIST_DISPOSITIF);
+        sop("Obtenir la liste des dispositifs pour une zone spécifique : " + GET_LIST_DISPOSITIF_BY_ZONE);
+        sop("Ajouter un dispositif : " + ADD_DISPOSITIF);
+        sop("Supprimer un dispositif : " + REMOVE_DISPOSITIF);
+        sop("Changer la zone d'un dispositif : " + CHANGE_ZONE_OF_DISPOSITIF);
+        sop("Sélectionner un dispositif afin de faire une action : " + SELECT_DISPOSITIF);
+        sop("Activer ou désactiver tous les dispositifs d'une zone : " + ACTION_ON_ALL_DISPOSITIF_IN_ZONE);
+        sop("ZONE---------------------------");
+        sop("Obtenir la liste des zones : " + GET_LIST_ZONE);
+        sop("Ajouter une zone : " + ADD_ZONE);
+        sop("Ajouter une zone dans une autre zone : " + ADD_ZONE_TO_ZONE);
+        sop("Supprimer une zone : " + REMOVE_ZONE);
+        sop("ALERTE---------------------------");
+        sop("Obtenir la liste des notifications du système d'alerte : " + GET_LIST_NOTIFICATION);
+        sop("Supprimer toutes les notifications du système d'alerte : " + REMOVE_ALL_NOTIFICATIONS);
+        sop("Générer une fausse alerte : " + GENERATE_FALSE_ALERTE);
+        sop("Gérer les actions lors d'une alerte : " + EDIT_ALERT_ACTION);
+        sop("AUTRE-------------------------------");
+        sop("Basculer sur l'interface habitant : " + CHANGE_TO_HABITANT_INTERFACE);
+        sop("Stopper l'application : " + STOP);
         sop("Que voulez-vous faire ?");
         String str = sc.nextLine().toLowerCase();
         sop("Vous avez saisi la commande: " + str);
         return str;
     }
 
-    public void afficher(String str) {
-        sop(str);
+    public String readCommandeHabitant() {
+        sop("---------- COMMANDES ----------");
+        sop("HABITANT-------------------");
+        sop("Obtenir la liste des habitants : " + GET_LIST_HABITANT);
+        sop("GESTIONNAIRE-------------------");
+        sop("Obtenir le gestionnaire courant : " + GET_CURRENT_GESTIONNAIRE);
+        sop("DISPOSITIF---------------------");
+        sop("Obtenir la liste des dispositifs : " + GET_LIST_DISPOSITIF);
+        sop("Sélectionner un dispositif afin de faire une action : " + SELECT_DISPOSITIF);
+        sop("ZONE---------------------------");
+        sop("Obtenir la liste des zones : " + GET_LIST_ZONE);
+        sop("ALERTE---------------------------");
+        sop("Obtenir la liste des notifications du système d'alerte : " + GET_LIST_NOTIFICATION);
+        sop("AUTRE-------------------------------");
+        sop("Stopper l'application : " + STOP);
+        sop("Que voulez-vous faire ?");
+        String str = sc.nextLine().toLowerCase();
+        sop("Vous avez saisi la commande: " + str);
+        return str;
     }
 
+    public String readCommandeDispositif(String possibilities) {
+        sop("<><><><><>COMMANDES DISPOSITIF<><><><><>");
+        print(possibilities);
+        sop("Veuillez choisir un chiffre correspondant à une action");
+        String str = sc.nextLine().toLowerCase();
+        sop("Vous avez saisi le chiffre: " + str);
+        return str;
+    }
 
-    public String getNomMembre() {
-        sop("quel est votre nom ?");
+    public void showAllAlerteAction(String s) {
+        sop("<><><><><>ALERTE ACTION<><><><><>");
+        sop(s);
+    }
+
+    public void print(String str) {
+        sop(ANSI_RED + str + ANSI_RESET);
+    }
+
+    public String getNomUser() {
+        sop("Quel est votre nom ?");
         return sc.nextLine();
     }
 
-    public void afficherMessages(List<Message> arrayList) {
-        int i = 1;
-        sop("\t messages : ");
-        if (arrayList == null) {
-            sop("\t Pas de messages ");
-        } else
-            for (Message m : arrayList) {
-                sop("\t" + i + "-\t" + m);
-                i++;
-            }
-    }
-
-    public String getNomDuForum(Set<String> nomsForum) {
-        sop("--- Forum disponibles --- ");
-        afficheListe(nomsForum);
-        sop("==> Nom du Forum ?");
-        return sc.nextLine();
-    }
-
-    public void afficheListe(Set<String> noms) {
-        for (String nom : noms)
-            sop("\t" + nom);
-    }
-
-
-    public String getNomCanal(Set<String> nomsCanaux) {
-        sop("--- Canals disponibles --- ");
-        afficheListe(nomsCanaux);
-        sop("==> Nom du Canal ?");
-        return sc.nextLine();
-    }
-
-
-    public String getValeur(String message) {
-        sop(message);
+    public String getPasswordUser() {
+        sop("Quel est le mot de passe ?");
         return sc.nextLine();
     }
 
@@ -92,10 +136,17 @@ public class UserConsole {
         return sc.nextLine();
     }
 
-    public int getSize() {
-        sop("===> quelle taille ? ");
-        int i = sc.nextInt();
-        sc.nextLine();
-        return i;
+    /**
+     * Fake loading
+     *
+     * @throws InterruptedException if the waiting/loading thread is interrupted
+     */
+    public void loading() throws InterruptedException {
+        sop(".");
+        TimeUnit.SECONDS.sleep(1);
+        sop("..");
+        TimeUnit.SECONDS.sleep(1);
+        sop("...");
     }
+
 }

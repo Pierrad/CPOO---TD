@@ -1,56 +1,53 @@
-package testZone;
-
-import static org.junit.jupiter.api.Assertions.*;
+package zone;
 
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import zone.Zone;
+public class ZoneTest {
+    private Zone z;
 
-/** Test classe de Zone
- * @author CAPARROS Damien
- **/
+    @BeforeEach
+    void setUp() {
+        z = new Zone("HOUSE", "La maison");
+    }
 
-class ZoneTest {
+    @AfterEach
+    void destroy() {
+        z = null;
+    }
 
-	@BeforeEach
-	void setUp() throws Exception
-	{
+    @Test
+    void testSetterName() {
+        z.setName("JARDIN");
+        Assertions.assertEquals("JARDIN", z.getName());
+    }
 
-	}
+    @Test
+    void testSetterDescription() {
+        z.setDescription("Description");
+        Assertions.assertEquals("Description", z.getDescription());
+    }
 
-	@AfterEach
-	void tearDown() throws Exception
-	{
+    @Test
+    void testAddNestedZone() {
+        z.addZoneToNestedZone(new Zone("ETAGE"));
+        Assertions.assertEquals(1, z.getNestedZone().size());
+    }
 
-	}
+    @Test
+    void testRemoveNestedZone() {
+        Zone z1 = new Zone("ETAGE");
+        z.addZoneToNestedZone(z1);
+        Assertions.assertEquals(1, z.getNestedZone().size());
+        z.removeZoneToNestedZone(z1);
+        Assertions.assertEquals(0, z.getNestedZone().size());
+    }
 
-	@Test
-	void test()
-	{
-
-		// Test des constructeur ------------------------
-
-		Zone salon = new Zone("Salon","C'est le salon");
-		Zone chambre = new Zone("Chambre");
-
-		// Test des get ---------------------------------
-
-		salon.getName();
-		salon.getDesc();
-
-		chambre.getName();
-		chambre.getDesc();
-
-		// Test des set ---------------------------------
-
-		salon.setName("Salon01");
-		salon.setDesc("Salon, salle à manger");
-
-		chambre.setName("Chambre01");
-		chambre.setDesc("Chambre de Julien");
-
-		}
+    @Test
+    void testToString() {
+        Assertions.assertEquals("HOUSE", z.toString());
+    }
 
 }

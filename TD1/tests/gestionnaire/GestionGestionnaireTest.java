@@ -14,37 +14,32 @@ public class GestionGestionnaireTest {
     }
 
     @AfterEach
-    void tearDown() {
+    void destroy() {
         gg = null;
     }
 
     @Test
+    void testGetCurrentGestionnaire() {
+        Assertions.assertEquals("Client", gg.getCurrentGestionnaire().getName());
+        Assertions.assertEquals("1234", gg.getCurrentGestionnaire().getPassword());
+    }
+
+    @Test
     void testDefineNewGestionnaire() {
-        String n = "PA";
-        String p = "password";
-        gg.defineNewGestionnaire(n, p);
-        Assertions.assertEquals("PA", gg.getCurrentGestionnaire());
+        gg.defineNewGestionnaire("Test", "Test");
+        Assertions.assertEquals("Test", gg.getCurrentGestionnaire().getName());
+        Assertions.assertEquals("Test", gg.getCurrentGestionnaire().getPassword());
     }
 
     @Test
     void testIsGestionnaire() {
-        String n = "PA";
-        String p = "password";
-        Assertions.assertEquals(false, gg.isGestionnaire(n));
-        gg.defineNewGestionnaire(n, p);
-        Assertions.assertEquals(true, gg.isGestionnaire(n));
+        Gestionnaire g = new Gestionnaire("Client", "1234");
+        Assertions.assertTrue(gg.isGestionnaire(g.getName()));
     }
 
     @Test
     void testDisconnect() {
-        Assertions.assertEquals("Default", gg.getCurrentGestionnaire());
         gg.disconnect();
         Assertions.assertNull(gg.getCurrentGestionnaire());
     }
-
-    @Test
-    void TestSwitchInterfaceHabitant() {
-        // TODO
-    }
-
 }

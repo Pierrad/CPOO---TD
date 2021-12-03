@@ -1,32 +1,18 @@
 package gestionnaire;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 
-import habitant.Habitant;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+public class GestionnaireTest {
+    private Gestionnaire g;
 
-class GestionnaireTest {
-    private Gestionnaire a;
-
-    @BeforeAll
-    void setup() {
-        a = new Gestionnaire("a", "b");
+    @BeforeEach
+    void setUp() {
+        g = new Gestionnaire("Gestionnaire", "Azerty");
     }
 
-    @Test
-    void testAddHabitant() {
-        Assertions.assertEquals("florian", a.addHabitant("florian", "1234").getName());
-        Assertions.assertEquals("1234", a.addHabitant("florian", "1234").getPassword());
+    @AfterEach
+    void destroy() {
+        g = null;
     }
-
-    @Test
-    void testDeleteHabitant() {
-        Habitant b = a.addHabitant("Test", "aaaa");
-        a.removeHabitant(b);
-        Assertions.assertNull(b.getName());
-        Assertions.assertNull(b.getPassword());
-
-    }
-
 }

@@ -2,10 +2,14 @@ package gestionnaire;
 
 import habitant.Habitant;
 
+import java.io.Serializable;
+
 /**
- *
+ * @author Vasseur Pierre-Adrien
+ * <p>
+ * Gestionnaire class
  */
-public class Gestionnaire extends Habitant {
+public class Gestionnaire extends Habitant implements Serializable, IGestionnaire {
     private String name;
     private String password;
 
@@ -13,17 +17,4 @@ public class Gestionnaire extends Habitant {
         super(name, password);
     }
 
-    // public void addZone(String nom, String description)
-    //{
-    //   d�j� existante pour GestionZone, n�cessit� de le faire?
-    //}
-
-    public void removeHabitant(Habitant a) {
-        a.setName(null);
-        a.setPassword(null);
-    }
-
-    public Habitant addHabitant(String name, String password) {
-        return new Habitant(name, password);
-    }
 }

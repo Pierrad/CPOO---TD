@@ -1,9 +1,32 @@
 package dispositif;
 
-    /** Interface IDispositif
-    * @author Dylan Lafaire
-    **/
+import zone.Zone;
 
 public interface IDispositif {
-    void triggerDispositif();
+    String getName();
+
+    void setName(String name);
+
+    Integer getId();
+
+    void setId(Integer id);
+
+    Zone getZone();
+
+    void setZone(Zone z);
+
+    Boolean getState();
+
+    void setState(Boolean state);
+
+    String[] getLogs();
+
+    void setLogs(String[] s);
+
+    void clearLog();
+
+    String possibilities();
+
+    @Override
+    String toString();
 }
